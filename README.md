@@ -4,7 +4,25 @@ A computer vision based Air Guitar system that allows users to play virtual guit
 
 ---
 
+## Demo
+
+<p align="center">
+  <img src="docs/Test.gif" width="100%">
+</p>
+
+---
+
+## Screenshot
+
+<p align="center">
+  <img src="docs/main.png" width="100%">
+</p>
+
+---
+
 ## Features
+
+The system uses MediaPipe hand tracking to recognize chord gestures with the left hand and perform virtual guitar strumming with the right hand in real time.
 
 ### 🎵 Gesture-Based Chord Selection
 
@@ -108,6 +126,7 @@ Time_Seconds,Y_Coordinate
 AirGuitar/
 │
 ├── src/
+│   ├── csv/
 │   ├── vision.py
 │   ├── logic.py
 │   ├── app.py
@@ -121,12 +140,15 @@ AirGuitar/
 │   ├── thumb.png
 │   └── none.png
 │
+├── docs/
+│   ├── Test.gif
+│   └── main2.png
+│
 ├── assets/
 │   ├── Em7_1.wav
 │   ├── Em7_2.wav
 │   ├── ...
 │
-├── csv/
 │
 ├── requirements.txt
 └── README.md
@@ -231,4 +253,4 @@ hand_data_20260609_153245.csv
 
 ## License
 
-This project is intended for educational and research purposes.
+This project was developed for academic and educational purposes.
