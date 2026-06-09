@@ -110,6 +110,7 @@ AirGuitar/
 ├── src/
 │   ├── vision.py
 │   ├── logic.py
+│   ├── app.py
 │   └── audio_handler.py
 │
 ├── gui/
@@ -127,7 +128,6 @@ AirGuitar/
 │
 ├── csv/
 │
-├── app.py
 ├── requirements.txt
 └── README.md
 ```
@@ -172,6 +172,7 @@ pip install -r requirements.txt
 ## Run
 
 ```bash
+cd src
 python app.py
 ```
 
