@@ -469,7 +469,7 @@ class AirGuitarGUI(ctk.CTk):
 
         else:
 
-            color = (230, 230, 230)
+            color = (255, 255, 255)
 
             thickness = int(
                 base_thickness

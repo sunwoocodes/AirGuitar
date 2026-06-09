@@ -1,5 +1,6 @@
 import cv2
 import mediapipe as mp
+import numpy as np
 
 class VisionController:
 
@@ -77,6 +78,8 @@ class VisionController:
         strum_y = None
         gesture_name = "UNKNOWN"
 
+        mask = np.zeros(frame.shape[:2], dtype=np.uint8)
+
         if results.multi_hand_landmarks and results.multi_handedness:
 
             hand_data = []
@@ -94,6 +97,23 @@ class VisionController:
                     frame,
                     hand_landmarks,
                     self.mp_hands.HAND_CONNECTIONS
+                )
+
+                points = []
+
+                for lm in hand_landmarks.landmark:
+                    x = int(lm.x * frame.shape[1])
+                    y = int(lm.y * frame.shape[0])
+                    points.append([x, y])
+
+                points = np.array(points)
+
+                hull = cv2.convexHull(points)
+
+                cv2.fillConvexPoly(
+                    mask,
+                    hull,
+                    255
                 )
 
             for label, hand_landmarks in hand_data:
@@ -114,5 +134,24 @@ class VisionController:
                 elif label == "Right":
 
                     strum_y = hand_landmarks.landmark[8].y
+
+        mask = cv2.dilate(
+            mask,
+            np.ones((30,30), np.uint8),
+            iterations=1
+        )
+
+        mask = cv2.GaussianBlur(
+            mask,
+            (31,31),
+            0
+        )
+
+        alpha = mask.astype(np.float32) / 255.0
+        alpha = alpha[..., np.newaxis]
+
+        frame = (
+            frame.astype(np.float32) * alpha
+        ).astype(np.uint8)
 
         return frame, strum_y, gesture_name
