@@ -7,7 +7,7 @@ A computer vision based Air Guitar system that allows users to play virtual guit
 ## Demo
 
 <p align="center">
-  <img src="docs/Test.gif" width="100%">
+  <img src="Docs/Test.gif" width="100%">
 </p>
 
 ---
@@ -15,7 +15,7 @@ A computer vision based Air Guitar system that allows users to play virtual guit
 ## Screenshot
 
 <p align="center">
-  <img src="docs/main.png" width="100%">
+  <img src="Docs/main.png" width="100%">
 </p>
 
 ---
